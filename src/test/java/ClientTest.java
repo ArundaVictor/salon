@@ -18,111 +18,111 @@ public class ClientTest {
     @Test
     public void Client_instantiatesWithName_String() {
         Client myClient = new Client("Caroline", 1);
-        assertEquals("Mow the lawn", myTask.getDescription());
+        assertEquals("Caroline", myClient.getName());
     }
 
-    @Test
-    public void isCompleted_isFalseAfterInstantiation_false() {
-        Task myTask = new Task("Mow the lawn", 1);
-        assertEquals(false, myTask.isCompleted());
-    }
+    // @Test
+    // public void isCompleted_isFalseAfterInstantiation_false() {
+    //     Client myClient = new Client("Mow the lawn", 1);
+    //     assertEquals(false, myClient.isCompleted());
+    // }
 
-    @Test
-    public void getCreatedAt_instantiatesWithCurrentTime_today() {
-        Task myTask = new Task("Mow the lawn", 1);
-        assertEquals(LocalDateTime.now().getDayOfWeek(), myTask.getCreatedAt().getDayOfWeek());
-    }
+    // @Test
+    // public void getCreatedAt_instantiatesWithCurrentTime_today() {
+    //     Client myClient = new Client("Mow the lawn", 1);
+    //     assertEquals(LocalDateTime.now().getDayOfWeek(), myClient.getCreatedAt().getDayOfWeek());
+    // }
 
 // returns all data in database while still saving using sava()
       @Test
-      public void all_returnsAllInstancesOfTask_true() {
-        Task firstTask = new Task("Mow the lawn", 1);
-        firstTask.save();
-        Task secondTask = new Task("Mow the lawn", 1);
-        secondTask.save();
-        assertEquals(true, Task.all().get(0).equals(firstTask));
-        assertEquals(true, Task.all().get(1).equals(secondTask));
+      public void all_returnsAllInstancesOfClient_true() {
+        Client firstCliet = new Client("Caroline", 1);
+        firstClient.save();
+        Client secondClient = new Client("Caroline", 1);
+        secondClient.save();
+        assertEquals(true, Client.all().get(0).equals(firstClient));
+        assertEquals(true, Client.all().get(1).equals(secondClient));
       }
 
     @Test
-    public void clear_emptiesAllTasksFromArrayList_0() {
-        Task myTask = new Task("Mow the lawn", 1);
-        assertEquals(Task.all().size(), 0);
+    public void clear_emptiesAllClientsFromArrayList_0() {
+        Client myClient = new Client("Caroline", 1);
+        assertEquals(Client.all().size(), 0);
     }
 
 // this test checks that the id is greater than 0 from DB
     @Test
-    public void getId_tasksInstantiateWithAnID() {
-      Task myTask = new Task("Mow the lawn", 1);
-      myTask.save();
-      assertTrue(myTask.getId() > 0);
+    public void getId_clientInstantiateWithAnID() {
+      Client myClient = new Client("Caroline", 1);
+      myClient.save();
+      assertTrue(myClient.getId() > 0);
     }
-// Our Task.find(myTask.getId()) uses the Task's id to query the database and return a Task object.
+// Our Client.find(myClient.getId()) uses the Client's id to query the database and return a Client object.
       @Test
-      public void find_returnsTaskWithSameId_secondTask() {
-        Task firstTask = new Task("Mow the lawn", 1);
-        firstTask.save();
-        Task secondTask = new Task("Mow the lawn", 1);
-        secondTask.save();
-        assertEquals(Task.find(secondTask.getId()), secondTask);
+      public void find_returnsClientWithSameId_secondClient() {
+        Client firstClient = new Client("Caroline", 1);
+        firstClient.save();
+        Client secondClient = new Client("Caroline", 1);
+        secondClient.save();
+        assertEquals(Client.find(secondClient.getId()), secondClient);
       }
 
 // a test to check whether to instances of info retriieved from the database are the same 
     @Test
-    public void equals_returnsTrueIfDescriptionsAretheSame() {
-      Task firstTask = new Task("Mow the lawn", 1);
-      Task secondTask = new Task("Mow the lawn", 1);
-      assertTrue(firstTask.equals(secondTask));
+    public void equals_returnsTrueIfNamesAretheSame() {
+      Client firstClient = new Client("Caroline", 1);
+      Client secondClient = new Client("Caroline", 1);
+      assertTrue(firstClient.equals(secondClient));
     }
 
 // saving objects into the database
     @Test
-    public void save_returnsTrueIfDescriptionsAretheSame() {
-      Task myTask = new Task("Mow the lawn", 1);
-      myTask.save();
-      assertTrue(Task.all().get(0).equals(myTask));
+    public void save_returnsTrueIfNamesAretheSame() {
+      Client myClient = new Client("Caroline", 1);
+      myClient.save();
+      assertTrue(Client.all().get(0).equals(myClient));
     }
 
-// test ids of tasks in database and application
+// test ids of Clients in database and application
     @Test
     public void save_assignsIdToObject() {
-      Task myTask = new Task("Mow the lawn", 1);
-      myTask.save();
-      Task savedTask = Task.all().get(0);
-      assertEquals(myTask.getId(), savedTask.getId());
+      Client myClient = new Client("Mow the lawn", 1);
+      myClient.save();
+      Client savedClient = Client.all().get(0);
+      assertEquals(myClient.getId(), savedClient.getId());
     }
 
 // Next, we'll write a unit test that ensures 
-//we can save a categoryId into our tasks table, 
-//thereby associating a Task with its Category:
+//we can save a StylistId into our Clients table, 
+//thereby associating a Client with its Stylist:
       @Test
-      public void save_savesCategoryIdIntoDB_true() {
-        Category myCategory = new Category("Household chores");
-        myCategory.save();
-        Task myTask = new Task("Mow the lawn", myCategory.getId());
-        myTask.save();
-        Task savedTask = Task.find(myTask.getId());
-        assertEquals(savedTask.getCategoryId(), myCategory.getId());
+      public void save_savesStylistIdIntoDB_true() {
+        Stylist myStylist = new Stylist("Joy");
+        myStylist.save();
+        Client myClient = new Client("Caroline", myStylist.getId());
+        myClient.save();
+        Client savedClient = Client.find(myClient.getId());
+        assertEquals(savedClient.getStylistId(), myStylist.getId());
       }
 
       // code to handle updating a specific entry in our database.
 
       @Test
-public void update_updatesTaskDescription_true() {
-  Task myTask = new Task("Mow the lawn", 1);
-  myTask.save();
-  myTask.update("Take a nap");
-  assertEquals("Take a nap", Task.find(myTask.getId()).getDescription());
+public void update_updatesClientDescription_true() {
+  Client myClient = new Client("Caroline", 1);
+  myClient.save();
+  myClient.update("Emma");
+  assertEquals("Emma", Client.find(myClient.getId()).getName());
 }
 
 // code to handle locating and deleting database entries
 @Test
-public void delete_deletesTask_true() {
-  Task myTask = new Task("Mow the lawn", 1);
-  myTask.save();
-  int myTaskId = myTask.getId();
-  myTask.delete();
-  assertEquals(null, Task.find(myTaskId));
+public void delete_deletesClient_true() {
+  Client myClient = new Client("Caroline", 1);
+  myClient.save();
+  int myClientId = myClient.getId();
+  myClient.delete();
+  assertEquals(null, Client.find(myClientId));
 }
 
 }
