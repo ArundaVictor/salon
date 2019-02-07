@@ -17,7 +17,7 @@ public class StylistTest {
 
       @Test
   public void getName_StylistInstantiatesWithName_Home() {
-    Stylist testStylist = new Stylist("Home");
+    Stylist testStylist = new Stylist("Lana");
     assertEquals("Lana", testStylist.getName());
   }
 
@@ -48,9 +48,9 @@ public class StylistTest {
   // }
 
 	@Test
-	public void getTasks_initiallyReturnsEmptyList_ArrayList() {
+	public void getClients_initiallyReturnsEmptyList_ArrayList() {
 	  Stylist testStylist = new Stylist("Lana");
-	  assertEquals(0, testStylist.getTasks().size());
+	  assertEquals(0, testStylist.getClients().size());
   }
 
 // find objects saved in the database.
@@ -82,23 +82,23 @@ public class StylistTest {
 // Assigning Unique IDs
       @Test
       public void save_assignsIdToObject() {
-        Stylist myStylist = new Stylist("Household chores");
+        Stylist myStylist = new Stylist("Babs");
         myStylist.save();
         Stylist savedStylist = Stylist.all().get(0);
         assertEquals(myStylist.getId(), savedStylist.getId());
       }
 
-// to retrieve all Tasks saved into a specific Stylist.import java.util.Arrays;
+// to retrieve all Clients saved into a specific Stylist.import java.util.Arrays;
       @Test
-      public void getTasks_retrievesALlTasksFromDatabase_tasksList() {
-        Stylist myStylist = new Stylist("Household chores");
+      public void getClients_retrievesALlClientsFromDatabase_clientsList() {
+        Stylist myStylist = new Stylist("Babs");
         myStylist.save();
-        Task firstTask = new Task("Mow the lawn", myStylist.getId());
-        firstTask.save();
-        Task secondTask = new Task("Do the dishes", myStylist.getId());
-        secondTask.save();
-        Task[] tasks = new Task[] { firstTask, secondTask };
-        assertTrue(myStylist.getTasks().containsAll(Arrays.asList(tasks)));
+        Client firstClient = new Client("Emma", myStylist.getId());
+        firstClient.save();
+        Client secondClient = new Client("Caroline", myStylist.getId());
+        secondClient.save();
+        Client[] Clients = new Client[] { firstClient, secondClient };
+        assertTrue(myStylist.getClients().containsAll(Arrays.asList(Clients)));
       }
 
 }
