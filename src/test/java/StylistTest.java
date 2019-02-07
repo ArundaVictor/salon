@@ -11,22 +11,22 @@ public class StylistTest {
 
   @Test
   public void Stylist_instantiatesCorrectly_true() {
-    Stylist testStylist = new Stylist("Home");
+    Stylist testStylist = new Stylist("Lana");
     assertEquals(true, testStylist instanceof Stylist);
   }
 
       @Test
   public void getName_StylistInstantiatesWithName_Home() {
     Stylist testStylist = new Stylist("Home");
-    assertEquals("Home", testStylist.getName());
+    assertEquals("Lana", testStylist.getName());
   }
 
 // update one of our existing tests to use our new .save() method:
       @Test
       public void all_returnsAllInstancesOfStylist_true() {
-        Stylist firstStylist = new Stylist("Home");
+        Stylist firstStylist = new Stylist("Lana");
         firstStylist.save();
-        Stylist secondStylist = new Stylist("Work");
+        Stylist secondStylist = new Stylist("Michelle");
         secondStylist.save();
         assertEquals(true, Stylist.all().get(0).equals(firstStylist));
         assertEquals(true, Stylist.all().get(1).equals(secondStylist));
@@ -34,8 +34,8 @@ public class StylistTest {
 
 // We'll also modify our existing test for the getId() method:
      @Test
-     public void getId_categoriesInstantiateWithAnId_1() {
-       Stylist testStylist = new Stylist("Home");
+     public void getId_stylistsInstantiateWithAnId_1() {
+       Stylist testStylist = new Stylist("Lana");
        testStylist.save();
        assertTrue(testStylist.getId() > 0);
      }
@@ -49,16 +49,16 @@ public class StylistTest {
 
 	@Test
 	public void getTasks_initiallyReturnsEmptyList_ArrayList() {
-	  Stylist testStylist = new Stylist("Home");
+	  Stylist testStylist = new Stylist("Lana");
 	  assertEquals(0, testStylist.getTasks().size());
   }
 
 // find objects saved in the database.
      @Test
      public void find_returnsStylistWithSameId_secondStylist() {
-       Stylist firstStylist = new Stylist("Home");
+       Stylist firstStylist = new Stylist("Lana");
        firstStylist.save();
-       Stylist secondStylist = new Stylist("Work");
+       Stylist secondStylist = new Stylist("Michelle");
        secondStylist.save();
        assertEquals(Stylist.find(secondStylist.getId()), secondStylist);
      }
@@ -66,15 +66,15 @@ public class StylistTest {
 // Overriding equals()
       @Test
       public void equals_returnsTrueIfNamesAretheSame() {
-        Stylist firstStylist = new Stylist("Household chores");
-        Stylist secondStylist = new Stylist("Household chores");
+        Stylist firstStylist = new Stylist("Babs");
+        Stylist secondStylist = new Stylist("Babs");
         assertTrue(firstStylist.equals(secondStylist));
       }
 
 // Saving New Objects to the Database test
       @Test
       public void save_savesIntoDatabase_true() {
-        Stylist myStylist = new Stylist("Household chores");
+        Stylist myStylist = new Stylist("Babs");
         myStylist.save();
         assertTrue(Stylist.all().get(0).equals(myStylist));
       }
