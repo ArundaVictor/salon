@@ -108,7 +108,7 @@ public class ClientTest {
       // code to handle updating a specific entry in our database.
 
       @Test
-public void update_updatesClientDescription_true() {
+public void update_updatesClientName_true() {
   Client myClient = new Client("Caroline", 1);
   myClient.save();
   myClient.update("Emma");
