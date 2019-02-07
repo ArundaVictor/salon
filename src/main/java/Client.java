@@ -103,7 +103,7 @@ public class Task {
 // Method to delete a task
 public void delete() {
   try(Connection con = DB.sql2o.open()) {
-  String sql = "DELETE FROM tasks WHERE id = :id;";
+  String sql = "DELETE FROM clients WHERE id = :id;";
   con.createQuery(sql)
     .addParameter("id", id)
     .executeUpdate();
