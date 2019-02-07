@@ -2,11 +2,11 @@ import java.util.List;
 import java.util.Arrays;
 import org.sql2o.*;
 
-public class Category {
+public class Stylist {
   private String name;
   private int id;
 
-  public Category(String name) {
+  public Stylist(String name) {
     this.name = name;
   }
 
@@ -14,31 +14,31 @@ public class Category {
     return name;
   }
 
-// Here, we construct a basic SQL query requesting all id and description data from the categoriestable.
-  public static List<Category> all() {
-    String sql = "SELECT id, name FROM categories";
-    try(Connection con = DB.sql2o.open()) {
-      return con.createQuery(sql).executeAndFetch(Category.class);
-    }
-  }
-
   public int getId() {
    return id;
   }
+
+  // Here, we construct a basic SQL query requesting all id and description data from the styliststable.
+  public static List<Stylist> all() {
+    String sql = "SELECT id, name FROM stylists";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Stylist.class);
+    }
+  }
   
-// To make it pass (find test), we can re-populate our static find() method with code to locate a specific Category:
+// To make it pass (find test), we can re-populate our static find() method with code to locate a specific Stylist:
 // Here we are using a select query using where id=:id. 
 // We use .addParameter("id", id)to pass in the id argument to the sql query 
-// and then we run .executeAndFetchFirst(Category.class);. 
+// and then we run .executeAndFetchFirst(Stylist.class);. 
 // This will return the first item in the collection returned by our database, 
-// cast as a Category object. Finally, we return that Category.
-    public static Category find(int id) {
+// cast as a Stylist object. Finally, we return that Stylist.
+    public static Stylist find(int id) {
         try(Connection con = DB.sql2o.open()) {
-          String sql = "SELECT * FROM categories where id=:id";
-          Category category = con.createQuery(sql)
+          String sql = "SELECT * FROM stylists where id=:id";
+          Stylist stylist = con.createQuery(sql)
             .addParameter("id", id)
-            .executeAndFetchFirst(Category.class);
-          return category;
+            .executeAndFetchFirst(Stylist.class);
+          return stylist;
         }
       }
 
@@ -47,7 +47,7 @@ public class Category {
 // (You will need to add import java.util.Arrays; to the top of the file to use Arrays.asList.)
       public List<Task> getTasks() {
         try(Connection con = DB.sql2o.open()) {
-          String sql = "SELECT * FROM tasks where categoryId=:id";
+          String sql = "SELECT * FROM tasks where StylistId=:id";
           return con.createQuery(sql)
             .addParameter("id", this.id)
             .executeAndFetch(Task.class);
@@ -56,13 +56,13 @@ public class Category {
 // equals() method 
 // We should also modify our equals() method to account for this new property:(ids)
       @Override
-      public boolean equals(Object otherCategory) {
-        if (!(otherCategory instanceof Category)) {
+      public boolean equals(Object otherStylist) {
+        if (!(otherStylist instanceof Stylist)) {
           return false;
         } else {
-          Category newCategory = (Category) otherCategory;
-          return this.getName().equals(newCategory.getName()) &&
-                 this.getId() == newCategory.getId();
+          Stylist newStylist = (Stylist) otherStylist;
+          return this.getName().equals(newStylist.getName()) &&
+                 this.getId() == newStylist.getId();
         }
       }
 
@@ -70,7 +70,7 @@ public class Category {
 // we'll use save() to assign the object the same id as its data in the database:
       public void save() {
         try(Connection con = DB.sql2o.open()) {
-          String sql = "INSERT INTO categories(name) VALUES (:name)";
+          String sql = "INSERT INTO stylists(name) VALUES (:name)";
           this.id = (int) con.createQuery(sql, true)
             .addParameter("name", this.name)
             .executeUpdate()
