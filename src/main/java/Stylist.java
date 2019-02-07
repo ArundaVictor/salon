@@ -35,12 +35,12 @@ public class Stylist {
         }
       }
 
-      public List<Task> getTasks() {
+      public List<Client> getClients() {
         try(Connection con = DB.sql2o.open()) {
-          String sql = "SELECT * FROM tasks where StylistId=:id";
+          String sql = "SELECT * FROM clients where StylistId=:id";
           return con.createQuery(sql)
             .addParameter("id", this.id)
-            .executeAndFetch(Task.class);
+            .executeAndFetch(Client.class);
         }
       }
 

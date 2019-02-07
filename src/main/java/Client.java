@@ -10,7 +10,7 @@ public class Client {
     private int stylistId;
 
 // alter Task constructor to require a Category ID.
-    public Task(String name, int stylistId) {
+    public Client(String name, int stylistId) {
         this.name = name;
         this.stylistId = stylistId;
       }
@@ -43,7 +43,7 @@ public class Client {
         Client client = con.createQuery(sql)
           .addParameter("id", id)
           .executeAndFetchFirst(Client.class);
-        return clent;
+        return client;
       }
     }
 
@@ -96,5 +96,7 @@ public void delete() {
     .addParameter("id", id)
     .executeUpdate();
   }
+}
+
 }
 
