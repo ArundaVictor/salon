@@ -79,10 +79,10 @@ public class Task {
 // This will ensure the categoryId is saved in our database:
       public void save() {
         try(Connection con = DB.sql2o.open()) {
-          String sql = "INSERT INTO tasks(description, categoryId) VALUES (:description, :categoryId)";
+          String sql = "INSERT INTO clients(name, stylistId) VALUES (:name, :stylistId)";
           this.id = (int) con.createQuery(sql, true)
-            .addParameter("description", this.description)
-            .addParameter("categoryId", this.categoryId)
+            .addParameter("name", this.name)
+            .addParameter("stylistId", this.stylistId)
             .executeUpdate()
             .getKey();
         }
@@ -90,11 +90,11 @@ public class Task {
 
       // Method to update a task
 
-      public void update(String description) {
+      public void update(String name) {
   try(Connection con = DB.sql2o.open()) {
-    String sql = "UPDATE tasks SET description = :description WHERE id = :id";
+    String sql = "UPDATE clients SET name = :name WHERE id = :id";
     con.createQuery(sql)
-      .addParameter("description", description)
+      .addParameter("name", name)
       .addParameter("id", id)
       .executeUpdate();
   }
