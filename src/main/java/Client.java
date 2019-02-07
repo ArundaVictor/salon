@@ -40,22 +40,22 @@ public class Task {
     }
 
 // getting from database and savin in a list
-//  update our Task.all() method's SQL query to include categoryId
-      public static List<Task> all() {
-        String sql = "SELECT id, description, categoryId FROM tasks";
+//  update our Client.all() method's SQL query to include stylistId
+      public static List<Client> all() {
+        String sql = "SELECT id, name, stylistId FROM clients";
         try(Connection con = DB.sql2o.open()) {
-         return con.createQuery(sql).executeAndFetch(Task.class);
+         return con.createQuery(sql).executeAndFetch(Client.class);
         }
       }
 
 // To make this test(find) pass, we'll re-populate our static find() method with code to locate a specific Taskin our database:
-    public static Task find(int id) {
+    public static Client find(int id) {
       try(Connection con = DB.sql2o.open()) {
-        String sql = "SELECT * FROM tasks where id=:id";
-        Task task = con.createQuery(sql)
+        String sql = "SELECT * FROM clients where id=:id";
+        Client client = con.createQuery(sql)
           .addParameter("id", id)
-          .executeAndFetchFirst(Task.class);
-        return task;
+          .executeAndFetchFirst(Client.class);
+        return clent;
       }
     }
 
