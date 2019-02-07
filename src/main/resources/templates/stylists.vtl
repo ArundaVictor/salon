@@ -1,0 +1,7 @@
+<h1>All Stlists</h1>
+<ul>
+  #foreach ($stylist in $stylists)
+    <li><a href="/categories/$stylist.getId()">$stylist.getName()</a></li>
+  #end
+</ul>
+<a href="/" class="alert-link">Go Back</a>.
