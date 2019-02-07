@@ -36,7 +36,7 @@ public class ClientTest {
 // returns all data in database while still saving using sava()
       @Test
       public void all_returnsAllInstancesOfClient_true() {
-        Client firstCliet = new Client("Caroline", 1);
+        Client firstClient = new Client("Caroline", 1);
         firstClient.save();
         Client secondClient = new Client("Caroline", 1);
         secondClient.save();
