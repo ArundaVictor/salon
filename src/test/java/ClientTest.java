@@ -10,14 +10,14 @@ public class ClientTest {
   public DatabaseRule database = new DatabaseRule();
 
     @Test
-    public void Task_instantiatesCorrectly_true() {
-        Task myTask = new Task("Mow the lawn", 1);
-        assertEquals(true, myTask instanceof Task);
+    public void Client_instantiatesCorrectly_true() {
+        Client myClient = new Client("Caroline", 1);
+        assertEquals(true, myClient instanceof Client);
     }
 
     @Test
-    public void Task_instantiatesWithDescription_String() {
-        Task myTask = new Task("Mow the lawn", 1);
+    public void Client_instantiatesWithName_String() {
+        Client myClient = new Client("Caroline", 1);
         assertEquals("Mow the lawn", myTask.getDescription());
     }
 
