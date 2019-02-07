@@ -63,14 +63,14 @@ public class Task {
 //update .equals() method 
 //to take this property (category id)into account when comparing Taskobjects:
       @Override
-      public boolean equals(Object otherTask){
-        if (!(otherTask instanceof Task)) {
+      public boolean equals(Object otherClient){
+        if (!(otherClient instanceof Client)) {
           return false;
         } else {
-          Task newTask = (Task) otherTask;
-          return this.getDescription().equals(newTask.getDescription()) &&
-                 this.getId() == newTask.getId() &&
-                 this.getCategoryId() == newTask.getCategoryId();
+          Client newClient = (Client) otherClient;
+          return this.getName().equals(newClient.getName()) &&
+                 this.getId() == newClient.getId() &&
+                 this.getStylistId() == newClient.getStylistId();
         }
       }
 
