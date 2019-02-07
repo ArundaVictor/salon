@@ -1,34 +1,22 @@
-import java.time.LocalDateTime;
+
     import java.util.ArrayList;
     import java.util.List;
     import org.sql2o.*;
     
 
-public class Task {
+public class Client {
     private String name;
-    private boolean completed;
-    private LocalDateTime createdAt;
     private int id;
     private int stylistId;
 
 // alter Task constructor to require a Category ID.
     public Task(String name, int stylistId) {
         this.name = name;
-        completed = false;
-        createdAt = LocalDateTime.now();
         this.stylistId = stylistId;
       }
 
     public String getName() {
         return name;
-    }
-
-    public boolean isCompleted() {
-        return completed;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
     }
 
     public int getId() {
