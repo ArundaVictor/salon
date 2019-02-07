@@ -12,15 +12,15 @@ public class Task {
     private int stylistId;
 
 // alter Task constructor to require a Category ID.
-    public Task(String description, int categoryId) {
-        this.description = description;
+    public Task(String name, int stylistId) {
+        this.name = name;
         completed = false;
         createdAt = LocalDateTime.now();
-        this.categoryId = categoryId;
+        this.stylistId = stylistId;
       }
 
-    public String getDescription() {
-        return description;
+    public String getName() {
+        return name;
     }
 
     public boolean isCompleted() {
@@ -35,8 +35,8 @@ public class Task {
         return id;
     }
 
-    public int getCategoryId() {
-      return categoryId;
+    public int getStylistId() {
+      return stylistId;
     }
 
 // getting from database and savin in a list
