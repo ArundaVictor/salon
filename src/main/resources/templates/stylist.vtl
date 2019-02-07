@@ -1,3 +1,5 @@
+<h2>$stylist.getName()</h2>
+<br>
 <h1>$stylist.getName()'s clients:</h1>
 
 <ul>
@@ -6,5 +8,19 @@
   #end
 </ul>
 
+
+<h2>Edit stylist's information:</h2>
+
+<form action="/stylists/$client.getStylistId()" method="post">
+  <label for="name">Enter stylist's name</label>
+  <input id="name" name="name" type="text" class = "form-control">
+  <button type="submit" class="btn btn-info">Update Stylist</button>
+</form>
+
+<form action="/stylists/$client.getStylistId()/delete" method="post">
+  <button type="submit" class="btn btn-danger" id="delete-client">Delete Stylist</button>
+</form>
+
+<a href="/stylists/$stylist.getId()">Return to stylist $stylist.getName()</a>
 <a href="/categories/$category.getId()/tasks/new">Add a new task</a>
 <a href="/stylists">All stylists</a>
