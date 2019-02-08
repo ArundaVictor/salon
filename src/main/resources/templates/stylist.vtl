@@ -11,13 +11,13 @@
 
 <h2>Edit stylist's information:</h2>
 
-<form action="/stylists/$client.getStylistId()" method="post">
+<form action="/stylists/$stylist.getStylistId()" method="post">
   <label for="name">Enter stylist's name</label>
   <input id="name" name="name" type="text" class = "form-control">
   <button type="submit" class="btn btn-info">Update Stylist</button>
 </form>
 
-<form action="/stylists/$client.getStylistId()/delete" method="post">
+<form action="/stylists/$stylist.getStylistId()/delete" method="post">
   <button type="submit" class="btn btn-danger" id="delete-client">Delete Stylist</button>
 </form>
 
