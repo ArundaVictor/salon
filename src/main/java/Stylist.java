@@ -5,13 +5,19 @@ import org.sql2o.*;
 public class Stylist {
   private String name;
   private int id;
+  private String description;
 
-  public Stylist(String name) {
+ public Stylist(String name) {
     this.name = name;
+    this.description = description;
   }
 
   public String getName() {
     return name;
+  }
+
+  public String getDescription() {
+    return description;
   }
 
   public int getId() {
@@ -44,7 +50,7 @@ public class Stylist {
         }
       }
 
-      public void updateName(String name) {
+      public void updateDescription(String name) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "UPDATE stylists SET name=:name WHERE id=:id";
       con.createQuery(sql)
