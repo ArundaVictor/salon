@@ -16,9 +16,9 @@ This is a java application where an owner of a salon can add stylists to their s
 
 #### To re-create the database, follow these steps;
 In PSQL:
-1.CREATE DATABASE hair_salon;
-2.CREATE TABLE clients (id serial PRIMARY KEY, name varchar, stylistId int);
-3.CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);
+1. CREATE DATABASE hair_salon;
+2. CREATE TABLE clients (id serial PRIMARY KEY, name varchar, stylistId int);
+3. CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);
 
 ## Behaviour driven Development (BDD)
 |#User inputs   |  #Example outputs |         
