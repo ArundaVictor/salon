@@ -11,16 +11,18 @@
 
 <h2>Edit stylist's information:</h2>
 
-<form action="/stylists/$stylist.getStylistId()" method="post">
+<form action="/stylists/$stylist.getStylistId()/update" method="post">
   <label for="name">Enter stylist's name</label>
   <input id="name" name="name" type="text" class = "form-control">
   <button type="submit" class="btn btn-info">Update Stylist</button>
 </form>
+<br>
+<br>
 
 <form action="/stylists/$stylist.getStylistId()/delete" method="post">
   <button type="submit" class="btn btn-danger" id="delete-client">Delete Stylist</button>
 </form>
 
 <a href="/stylists/$stylist.getId()">Return to stylist $stylist.getName()</a>
-<a href="/categories/$category.getId()/tasks/new">Add a new task</a>
+
 <a href="/stylists">All stylists</a>
