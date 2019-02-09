@@ -11,7 +11,7 @@
 
 <h2>Edit stylist's information:</h2>
 
-<form action="/stylists/$stylist.getStylistId()/update" method="post">
+<form action="/stylists/$stylist.getId()" method="post">
   <label for="name">Enter stylist's name</label>
   <input id="name" name="name" type="text" class = "form-control">
   <button type="submit" class="btn btn-info">Update Stylist</button>
@@ -19,8 +19,8 @@
 <br>
 <br>
 
-<form action="/stylists/$stylist.getStylistId()/delete" method="post">
-  <button type="submit" class="btn btn-danger" id="delete-client">Delete Stylist</button>
+<form action="/stylists/$stylist.getId()/delete" method="post">
+  <button type="submit" class="btn btn-danger" id="delete-client" onclick="promptMe()">Delete Stylist</button>
 </form>
 
 <a href="/stylists/$stylist.getId()">Return to stylist $stylist.getName()</a>

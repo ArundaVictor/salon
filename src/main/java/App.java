@@ -42,6 +42,14 @@ public class App {
           return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 
+         get("/clients", (request, response) -> {
+          Map<String, Object> model = new HashMap<String, Object>();
+          model.put("clients", Client.all());
+          model.put("template", "templates/clients.vtl");
+          return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+
         post("/clients", (request, response) -> {
           Map<String, Object> model = new HashMap<String, Object>();
         
@@ -107,18 +115,26 @@ public class App {
 
 
 
-         post("/stylist/:id/update", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      Stylist stylist = Stylist.find(Integer.parseInt(request.params("id")));
-      String description = request.queryParams("description");
-      stylist.updateDescription(description);
-      String name = request.queryParams("name");
-      stylist.updateDescription(name);
-      model.put("stylist", stylist.getName());
-      String url = String.format("/stylist/%d", stylist.getId());
-      response.redirect(url);
-      return null;
-    });  
+         post("/stylists/:id", (request, response) -> {
+          Map<String, Object> model = new HashMap<String, Object>();
+          Stylist stylist = Stylist.find(Integer.parseInt(request.params("id")));
+          String name = request.queryParams("name");
+          Stylist newStylist = Stylist.find(stylist.getId());
+          stylist.updateDescription(name);
+          String url = String.format("/stylists/%d", newStylist.getId());
+          response.redirect(url);
+          return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+          post("/stylists/:id/delete", (request, response) -> {
+          HashMap<String, Object> model = new HashMap<String, Object>();
+          Stylist stylist = Stylist.find(Integer.parseInt(request.params("id")));
+          stylist.delete();
+          model.put("stylist", stylist);
+          model.put("template", "templates/index.vtl");
+          return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
 
          
 
