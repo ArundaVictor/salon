@@ -3,7 +3,7 @@
 #if ($clients)
   <ul>
     #foreach ($client in $clients)
-      <li><a href="/client/$client.getId()">$client.getName()</a></li>
+      <li>$client.getName()</li>
     #end
   </ul>
 #else

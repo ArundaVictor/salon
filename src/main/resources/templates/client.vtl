@@ -6,8 +6,10 @@
 <form action="/stylists/$client.getStylistId()/clients/$client.getId()" method="post">
   <label for="name">Enter client's name</label>
   <input id="name" name="name" type="text" class = "form-control">
-  <button type="submit" class="btn btn-info">Update Client</button>
+  <br>
+  <button type="submit" class="btn btn-primary">Update Client</button>
 </form>
+<br>
 
 <form action="/stylists/$client.getStylistId()/clients/$client.getId()/delete" method="post">
   <button type="submit" class="btn btn-danger" id="delete-task" onclick = "client()">Delete Client</button>

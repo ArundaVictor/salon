@@ -14,15 +14,11 @@
 <form action="/stylists/$stylist.getId()" method="post">
   <label for="name">Enter stylist's name</label>
   <input id="name" name="name" type="text" class = "form-control">
-  <button type="submit" class="btn btn-info">Update Stylist</button>
+  <br>
+  <button type="submit" class="btn btn-primary">Update Stylist</button>
 </form>
-<br>
 <br>
 
 <form action="/stylists/$stylist.getId()/delete" method="post">
   <button type="submit" class="btn btn-danger" id="delete-client" onclick="promptMe()">Delete Stylist</button>
 </form>
-
-<a href="/stylists/$stylist.getId()">Return to stylist $stylist.getName()</a>
-
-<a href="/stylists">All stylists</a>
