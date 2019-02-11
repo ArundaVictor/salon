@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 public class DB { 
     private static URI dbUri; 
     public static Sql2o sql2o;
-    Logger logger = LoggerFactory.getLogger(DB.class);
+    static Logger logger = LoggerFactory.getLogger(DB.class);
     static {
     
         try {
